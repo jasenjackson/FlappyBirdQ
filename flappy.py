@@ -16,11 +16,27 @@ External scripts:
 
 import os, sys
 import numpy as np
-import obs-to-state
+import obs_to_state
 import params
 import gym_ple
 import gym
 from gym.wrappers import Monitor
+
+## file output
+outdir = '/Users/jasenmatthewjackson/github/Comp271/Q-learning/results7'
+extension = "Q-learning-"
+
+##Q-table initialization parameters
+n_vertical = 10
+n_horizontal = 10
+
+## Algorithm Hyper-params
+episode_count = 4000000000000
+eps = 0 #epsilon = exploration factor
+gamma = 1
+alpha = 0.618
+initial_lr = 0.618 #initial alpha
+min_lr = 0.618 #minimum alpha
 
 class Q_Agent(object):
     def __init__(self, action_space):
@@ -48,30 +64,25 @@ if __name__ == '__main__':
     print("~~~~~~~Let's Q Learn!~~~~~~~")
     Q = np.zeros((n_vertical,n_horizontal,2)) # (number of height bins, number of distance bins, number of actions)
     for i in range(episode_count):
+        print("Episode: " + str(i))
         ob = env.reset()
         total_reward = 0
         ## decrease the learning rate as time progresses -- should you do this for flappy bird??
         while True:
             #turn a and b into states
-            a, b = q_agent.obs_to_state(env, list(ob[0]))
+            a, b = obs_to_state.exponential(env, list(ob[0]))
+            print("vertical distance: " + str(a))
 
-            ##update alpha
-            approx =  #get approximaiton of q
-            N_table[a][b][approx] += 1 #= N[a][b][q_approx] + 1 #increment N(s,a)
-            N = N_table[a][b][approx] # set N to N(s,a)
-            lr = 1 / N #update alpha based on N(s,a)
+            #determine action from Q-learning agent
+            action = agent.act(a,b)
 
-            ##determine action from Q-learning agent
-            action = agent.act(a,b,approx,N)
-
+            #take a step in the environment
             ob, reward, done, _ = env.step(action)
-            # add (a,b,t) to feedback table
-            # t += 1
             total_reward += reward
 
-            # update q table
-            a_, b_ = q_agent.obs_to_state(env, list(ob[0]))
-            Q_table[a][b][action] = Q_table[a][b][action] + lr * (reward + gamma * np.max(Q_table[a_][b_]) - Q_table[a][b][action])
+            #update q table
+            a_, b_ = obs_to_state.exponential(env, list(ob[0]))
+            Q[a][b][action] = Q[a][b][action] + alpha * (reward + gamma * np.max(Q[a_][b_]) - Q[a][b][action])
             if done:
                 break
 
