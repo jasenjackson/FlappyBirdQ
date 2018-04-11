@@ -71,7 +71,7 @@ if __name__ == '__main__':
         while True:
             #turn a and b into states
             a, b = obs_to_state.exponential(env, list(ob[0]))
-            print("vertical distance: " + str(a))
+            #print("vertical distance: " + str(a))
 
             #determine action from Q-learning agent
             action = agent.act(a,b)
