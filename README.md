@@ -1,5 +1,5 @@
 # FlappyBirdQ
-<center><a href="https://imgflip.com/gif/28593x"><img src="https://i.imgflip.com/28593x.gif" title="made at imgflip.com"/></a></center>
+<center><a href="https://imgflip.com/gif/2859uo"><img src="https://i.imgflip.com/2859uo.gif" title="made at imgflip.com"/></a></a></center>
 
 The goal of this project is to develop a model-free Q-learning agent (in Python) that can play Flappy Bird and win indefinitely. Q-learning is a machine-learning technique that uses a "Q" function that converts non-visual state representations into meaningful actions. Here, our non-visual states or "observations" are the horizontal and vertical distance relative to the bottom pipe, and we have two actions: jump or sink. For each time step, our agent assesses its location relative to the next pipe, uses the Q-function to predict the action that will lead to the highest reward and updates the Q-function based on the reward value given from the environment.  
 
