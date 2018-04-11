@@ -1,7 +1,9 @@
 # FlappyBirdQ
-Q-learning with Flappy Bird
+Q-learning with Flappy Bird using temporal descriptive learning
 
-## q-learn-scratch.py (new name might do since this one isn't that descriptive?) 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/uuzPSM552_0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
+## flappy.py 
 
 Initializes a new Q_agent (class is in this file) and trains it on a designated number of episodes. It uses <b> q_agent.py </b> (should be something like obs_to_state.py) to convert observations from the getGameState() function to states for the Q table. 
 
