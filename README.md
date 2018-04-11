@@ -6,7 +6,7 @@ The goal of this project is to develop a model-free Q-learning agent (in Python)
  
 
 ## flappy.py 
-Initializes the agent and a Q-function (approximated using a numpy array) and trains it to run on a designated number of episodes. It uses the flappybird game from the PyGame Learning environment and openAI-gym for the reinforcement tasks. Therefore, PLE, gym-ple and gym are dependencies. The agent uses the obs_to_state function to convert continuous environmental variables to quantized state values which are subsequently fed into the Q-learning formula/algorithm. It uses <b> q_agent.py </b> (should be something like obs_to_state.py) to convert observations from the getGameState() function to states for the Q table. 
+Initializes the agent and a Q-function (approximated using a numpy array) and trains it to run on a designated number of episodes. It uses the flappybird game from the PyGame Learning environment and openAI-gym for the reinforcement tasks. Therefore, PLE, gym-ple and gym are dependencies. The agent uses the obs_to_state function to convert continuous environmental variables to quantized state values which are subsequently fed into the Q-learning formula/algorithm. It uses <b> obs_to_state.py </b>  to convert observations from the getGameState() function to states for the Q table. 
 
 ## obs_to_state.py
 Converts continuous variables from the game environment (bottom pipe y position, and the player's velocity, y position and distance to the next pipe) to quantized states. The exponential() function creates bins that grow exponentially with distance from the pipe. The uniform_10() function creates uniform bins for each state that are quantized to bin every 10 values by dividing by some integer and int() converting the end value. 
