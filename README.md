@@ -1,7 +1,8 @@
 # FlappyBirdQ
 Q-learning with Flappy Bird using temporal descriptive learning
 
-<img src="http://pygame-learning-environment.readthedocs.io/en/latest/_images/flappybird.gif />  
+![alt text](http://pygame-learning-environment.readthedocs.io/en/latest/_images/flappybird.gifg "Go Flappy, Go!")
+ 
 
 ## flappy.py 
 
