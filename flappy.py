@@ -27,11 +27,11 @@ outdir = '/Users/jasenmatthewjackson/github/Comp271/Q-learning/results7'
 extension = "Q-learning-"
 
 ##Q-table initialization parameters
-n_vertical = 10
-n_horizontal = 10
+n_vertical = 57
+n_horizontal = 29
 
 ## Algorithm Hyper-params
-episode_count = 4000000000000
+episode_count = 4000000000
 eps = 0 #epsilon = exploration factor
 gamma = 1
 alpha = 0.618
@@ -64,13 +64,13 @@ if __name__ == '__main__':
     print("~~~~~~~Let's Q Learn!~~~~~~~")
     Q = np.zeros((n_vertical,n_horizontal,2)) # (number of height bins, number of distance bins, number of actions)
     for i in range(episode_count):
-        print("Episode: " + str(i))
+        #print("Episode: " + str(i))
         ob = env.reset()
         total_reward = 0
         ## decrease the learning rate as time progresses -- should you do this for flappy bird??
         while True:
             #turn a and b into states
-            a, b = obs_to_state.exponential(env, list(ob[0]))
+            a, b = obs_to_state.uniform_10(env, list(ob[0]))
             #print("vertical distance: " + str(a))
 
             #determine action from Q-learning agent
@@ -81,7 +81,7 @@ if __name__ == '__main__':
             total_reward += reward
 
             #update q table
-            a_, b_ = obs_to_state.exponential(env, list(ob[0]))
+            a_, b_ = obs_to_state.uniform_10(env, list(ob[0]))
             Q[a][b][action] = Q[a][b][action] + alpha * (reward + gamma * np.max(Q[a_][b_]) - Q[a][b][action])
             if done:
                 break
