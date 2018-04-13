@@ -17,7 +17,7 @@ def uniform_10(env, obs):
     screen_height = 512
     player_y = ((screen_height-obs[0])) #381 is the max value, 0 is the min ()
     bottom_pipe = (screen_height-obs[4]) #512 is the max value, 220 is the min ()
-    vertical_distance = int(player_y - bottom_pipe) ## 17 possible states? Rough calculation
+    vertical_distance = int(player_y - bottom_pipe) ## this can range from -256 to 292 (?)
     horizontal_distance = int(obs[2]/10) ## 29 possible states? Rough calculation
 
     ## TODO:
@@ -25,7 +25,17 @@ def uniform_10(env, obs):
     ## that this can generate in order to define the q_table[a][b]. Is there a mathematical expression
     ## we could use for this?
 
-    return vertical_distance, horizontal_distance
+    state_hd = 0
+    state_vd = 0
+    if vertical_distance <= -1 and vertical_distance >= -9:
+        state_vd = -30
+    else:
+        state_vd = int(vertical_distance/10)
+    state_hd = int(horizontal_distance/10)
+
+    #print("state_vd: " + str(vertical_distance) + ", state: " +  str(state_vd))
+
+    return state_vd, state_hd
 
 
 
