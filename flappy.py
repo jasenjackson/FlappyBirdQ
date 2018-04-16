@@ -1,4 +1,5 @@
 '''
+beginning of flappy.py file
 Tabular Q Learning with Flappy bird (Comp 271 Final Project)
 Authors: Angie Georgaras '20, Jasen Jackson '19, Collins Mbachu '18, John Morris '19
 Script: Q-learning Agent Training for Flappy bird (flappy.py)
@@ -21,9 +22,10 @@ import params
 import gym_ple
 import gym
 from gym.wrappers import Monitor
+import ple_env
 
 ## file output
-outdir = '/Users/jasenmatthewjackson/github/Comp271/Q-learning/results7'
+outdir = '/Users/angiegeorgaras/Documents/FlappyBirdQ/Results'
 extension = "Q-learning-"
 
 ##Q-table initialization parameters
@@ -31,7 +33,7 @@ n_vertical = 57
 n_horizontal = 29
 
 ## Algorithm Hyper-params
-episode_count = 4000000000
+episode_count = 400000
 eps = 0 #epsilon = exploration factor
 gamma = 1
 alpha = 0.618
@@ -86,18 +88,13 @@ if __name__ == '__main__':
             if done:
                 break
 
-
         ## print every 250 episodes
         if i % 250 == 0:
             print("Episode: " + str(i) + ", Reward: " + str(total_reward))
             # Note there's no env.render() here. But the environment still can open window and
             # render if asked by env.monitor: it calls env.render('rgb_array') to record video.
             # Video is not recorded every episode, see capped_cubic_video_schedule for details.
-
-    # Dump the Q_table
-    np.save("/Users/jasenmatthewjackson/github/Comp271/Q-learning/q_table", Q_table)
-
-    #how to load the q_table
-    #Q_table_2 = np.load("q_table.npy")
-    #Q_table_2 == Q_table
+    # Dump the Q_table into terminal
+    print(Q)
     env.close()
+#end of flappy.py file

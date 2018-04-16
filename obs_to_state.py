@@ -1,4 +1,5 @@
 '''
+beginning of obs_to_state.py file
 Tabular Q Learning with Flappy bird (Comp 271 Final Project)
 Authors: Angie Georgaras '20, Jasen Jackson '19, Collins Mbachu '18, John Morris '19
 Script: Observation to State (obs-to-state.py)
@@ -95,3 +96,4 @@ def exponential(env, obs):
 
     #print("(vd,vc,hd,hc): (" + str(vertical_distance) + "," + str(vertical_cat) + "," + str(horizontal_distance) + "," + str(horizontal_cat) + ")")
     return height_cat, dist_cat
+#end of obs_to_state.py file

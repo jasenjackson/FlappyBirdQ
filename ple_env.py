@@ -1,9 +1,12 @@
+'''
+beginning of ple_env.py file, modified from native gym package ple_env.py to better suit our project
+'''
 import os
 import gym
 from gym import spaces
 from ple import PLE
 import numpy as np
-
+#changed to match jasens
 class PLEEnv(gym.Env):
     metadata = {'render.modes': ['human', 'rgb_array']}
 
@@ -88,3 +91,4 @@ class PLEEnv(gym.Env):
         self.game_state.game.rng = self.game_state.rng
 
         self.game_state.init()
+#end of ple_env.py file
